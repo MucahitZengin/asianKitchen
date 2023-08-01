@@ -32,7 +32,7 @@ const menu = [
     category: "China",
     price: 5.99,
     img:
-      "https://dwellbymichelle.com/wp-content/uploads/2020/05/DWELL-bibimbap.jpg",
+      "https://i2.wp.com/seonkyounglongest.com/wp-content/uploads/2019/10/Dan-Dan-Noodles-11.jpg?fit=2000%2C1333&ssl=1",
     desc: `Dan dan noodle, serving with green onion `,
   },
   {
@@ -107,27 +107,27 @@ function displayItems(menuItems) {
   const menuContainer = document.getElementById("menuItems");
   // Clear previous items
   menuContainer.innerHTML = "";
-  //her menuitems için 
-  menuItems.forEach((item) => {
-    //bir innerhtml yaz
-    const itemHTML = `
-    <div class="col-lg-4 col-md-6 menu-item">
-      <img src="${item.img}" alt="${item.title}" class="photo" />
-      <div class="menu-info">
-        <div class="menu-title">
-          <h4>${item.title}</h4>
-          <h4 class="price">${item.price}</h4>
-        </div>
-        <div class="menu-text">
-          ${item.desc}
+  // Map menu items to an array of HTML strings
+  const itemHTMLArray = menuItems.map((item) => {
+    return `
+      <div class="col-md-6 menu-items">
+        <img src="${item.img}" alt="${item.title}" class="photo" />
+        <div class="menu-info">
+          <div class="menu-title">
+            <h4>${item.title}</h4>
+            <h4 class="price">${item.price}</h4>
+          </div>
+          <div class="menu-text">
+            ${item.desc}
+          </div>
         </div>
       </div>
-    </div>
-      `;
-    //htmlyi ekle
-    menuContainer.innerHTML += itemHTML;
+    `;
   });
+  // Join the array into a single string and set it as the innerHTML
+  menuContainer.innerHTML = itemHTMLArray.join("");
 }
+
 
 // Add event listeners to the buttons
 document.addEventListener("DOMContentLoaded", function () {
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
   btnJapan.addEventListener("click", () => displayItemsByCategory("Japan"));//displayItemsByCategory olacak
   btnChina.addEventListener("click", () => displayItemsByCategory("China"));//tek satırda olabilir
   //Kategoriler büyük harfle olacak
-  
+
   // Display all items by default
   displayAllItems();
 });
