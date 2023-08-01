@@ -32,7 +32,7 @@ const menu = [
     category: "China",
     price: 5.99,
     img:
-      "https://www.savingdessert.com/wp-content/uploads/2019/02/Dan-Dan-Noodles-10.jpg",
+      "https://dwellbymichelle.com/wp-content/uploads/2020/05/DWELL-bibimbap.jpg",
     desc: `Dan dan noodle, serving with green onion `,
   },
   {
@@ -81,3 +81,69 @@ const menu = [
     desc: `Red bean paste dessert, serving with honey.`,
   },
 ];
+
+// Function to display all menu items
+function displayAllItems() {
+  //menuyu al ve display et
+  const menuItems = getMenuItems();
+  displayItems(menuItems);
+}
+
+// Function to filter and display menu items based on category
+function displayItemsByCategory(category) {
+  //menuyu filter ile al ve display et
+  const menuItems = getMenuItems().filter((item) => item.category === category);
+  displayItems(menuItems);
+}
+
+// Function to get all menu items
+function getMenuItems() {
+  return menu;
+}
+
+// Function to display menu items
+function displayItems(menuItems) {
+  //menu itemsi al
+  const menuContainer = document.getElementById("menuItems");
+  // Clear previous items
+  menuContainer.innerHTML = "";
+  //her menuitems için 
+  menuItems.forEach((item) => {
+    //bir innerhtml yaz
+    const itemHTML = `
+    <div class="col-lg-4 col-md-6 menu-item">
+      <img src="${item.img}" alt="${item.title}" class="photo" />
+      <div class="menu-info">
+        <div class="menu-title">
+          <h4>${item.title}</h4>
+          <h4 class="price">${item.price}</h4>
+        </div>
+        <div class="menu-text">
+          ${item.desc}
+        </div>
+      </div>
+    </div>
+      `;
+    //htmlyi ekle
+    menuContainer.innerHTML += itemHTML;
+  });
+}
+
+// Add event listeners to the buttons
+document.addEventListener("DOMContentLoaded", function () {
+  //butonları al
+  const btnAll = document.getElementById("all");
+  const btnKorea = document.getElementById("korea");
+  const btnJapan = document.getElementById("japan");
+  const btnChina = document.getElementById("china");
+
+  //tıklandığında display fonksiyonalarını çalıştır
+  btnAll.addEventListener("click", displayAllItems()); //direk yazabilirsin
+  //arrowda iteme gerek yok zaten kullanılmıyor da
+  btnKorea.addEventListener("click", () => displayItemsByCategory("korea"));//korea diye bir değişken yok tırnak içinde string göndereceksin
+  btnJapan.addEventListener("click", () => displayItemsByCategory("japan"));//displayItemsByCategory olacak
+  btnChina.addEventListener("click", () => displayItemsByCategory("china"));//tek satırda olabilir
+
+  // Display all items by default
+  displayAllItems();
+});

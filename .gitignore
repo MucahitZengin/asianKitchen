@@ -1,0 +1,22 @@
+# Sık kullanılan medya uzantıları
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+
+# Kompresyon dosyaları
+*.zip
+*.rar
+
+# Derleme dosyaları
+*.exe
+*.dll
+
+# Kullanıcı tarafından oluşturulan veriler ve yapılandırma dosyaları
+*.log
+*.xml
+*.json
+
+# IDE ve editör özel dosyaları
+.vscode/
