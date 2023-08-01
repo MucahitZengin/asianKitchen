@@ -138,12 +138,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnChina = document.getElementById("china");
 
   //tıklandığında display fonksiyonalarını çalıştır
-  btnAll.addEventListener("click", displayAllItems()); //direk yazabilirsin
+  btnAll.addEventListener("click", displayAllItems); //direk yazabilirsin
   //arrowda iteme gerek yok zaten kullanılmıyor da
-  btnKorea.addEventListener("click", () => displayItemsByCategory("korea"));//korea diye bir değişken yok tırnak içinde string göndereceksin
-  btnJapan.addEventListener("click", () => displayItemsByCategory("japan"));//displayItemsByCategory olacak
-  btnChina.addEventListener("click", () => displayItemsByCategory("china"));//tek satırda olabilir
-
+  btnKorea.addEventListener("click", () => displayItemsByCategory("Korea"));//korea diye bir değişken yok tırnak içinde string göndereceksin
+  btnJapan.addEventListener("click", () => displayItemsByCategory("Japan"));//displayItemsByCategory olacak
+  btnChina.addEventListener("click", () => displayItemsByCategory("China"));//tek satırda olabilir
+  //Kategoriler büyük harfle olacak
+  
   // Display all items by default
   displayAllItems();
 });
